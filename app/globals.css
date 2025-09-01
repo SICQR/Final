@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: #ff5300;
+}
+
+html, body {
+  @apply bg-white text-black;
+  font-size: 17px;
+}
+
+a { @apply underline underline-offset-4 decoration-brand; }
+.btn {
+  @apply inline-flex items-center justify-center px-4 py-2 rounded-2xl font-semibold;
+  background: var(--brand); color: white;
+}
+.card { @apply rounded-2xl border p-4 shadow-sm; }
+.sticky-dock { @apply fixed bottom-0 left-0 right-0 z-40 border-t bg-white/90 backdrop-blur; }

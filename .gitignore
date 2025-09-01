@@ -1,0 +1,7 @@
+node_modules
+.next
+.env.local
+sanity/node_modules
+sanity/.next
+.DS_Store
+*.log
