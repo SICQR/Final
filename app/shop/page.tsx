@@ -1,25 +1,57 @@
-import { PRODUCTS } from "@/lib/constants";
+import Image from "next/image";
+import Link from "next/link";
+import { getLatestProducts } from "@/lib/shopify";
+import type { Metadata } from "next";
 
-export default function ShopPage() {
+export const metadata: Metadata = { title: "Shop — HOTMESS" };
+
+export default async function ShopPage() {
+  let products: any[] = [];
+  try {
+    products = await getLatestProducts(3);
+  } catch {
+    // keep page calm if env not set
+  }
+
   return (
-    <section className="px-4 py-10">
-      <div className="mx-auto max-w-6xl">
-        <h1 className="font-heading text-4xl mb-6">Drops</h1>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {PRODUCTS.map(p => (
-            <article key={p.handle} className="card">
-              <div className="h-48 rounded-xl bg-slate-100 bg-center bg-cover" style={{ backgroundImage: `url(${p.image})` }}/>
-              <div className="pt-3">
-                <h2 className="font-semibold">{p.title}</h2>
-                <p className="opacity-80">{p.collection}</p>
-                <div className="flex items-center justify-between pt-2">
-                  <span className="font-semibold">£{(p.priceCents/100).toFixed(2)}</span>
-                  <a className="btn" href={`/t/${p.handle}`}>Buy</a>
-                </div>
+    <section style={{ display:"grid", gap:16 }}>
+      <h1>Own your mess.</h1>
+      {!products.length && (
+        <p style={{ opacity:.8 }}>
+          Add <code>SHOPIFY_DOMAIN</code> and <code>SHOPIFY_STOREFRONT_TOKEN</code> to <code>.env.local</code> to show your 3 live products.
+        </p>
+      )}
+      <div style={{ display:"grid", gap:12, gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))" }}>
+        {products.map((p:any) => {
+          const price = p?.priceRange?.minVariantPrice;
+          const priceStr = price
+            ? new Intl.NumberFormat("en-GB", { style:"currency", currency: price.currencyCode }).format(Number(price.amount))
+            : "—";
+          return (
+            <article key={p.handle} style={{ border:"1px solid rgba(255,255,255,.12)", borderRadius:16, overflow:"hidden" }}>
+              {p.featuredImage && (
+                <Image
+                  src={p.featuredImage.url}
+                  alt={p.featuredImage.altText || `${p.title} image`}
+                  width={p.featuredImage.width || 900}
+                  height={p.featuredImage.height || 600}
+                />
+              )}
+              <div style={{ padding:12, display:"grid", gap:6 }}>
+                <strong>{p.title}</strong>
+                <span style={{ opacity:.9 }}>{priceStr}</span>
+                <a
+                  className="inline-block rounded-xl border border-white/30 px-3 py-2 font-bold bg-orange-500 text-black hover:opacity-90"
+                  href={p.onlineStoreUrl || `https://${process.env.SHOPIFY_DOMAIN}/products/${p.handle}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  BUY ON SHOPIFY
+                </a>
               </div>
             </article>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </section>
   );

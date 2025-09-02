@@ -20,13 +20,9 @@ export default function StickyRadioDrawer() {
       {/* Sliding Drawer */}
       <AnimatePresence>
         {open && (
-          <motion.aside
-            initial={{ x: -260, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -260, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 380, damping: 28 }}
+          <aside
             className="bg-black/95 border-l-4 border-hotpink shadow-2xl w-64 min-h-[320px] pt-6 px-5 flex flex-col items-center"
-            style={{ borderTopLeftRadius: 12, borderBottomLeftRadius: 12 }}
+            style={{ borderTopLeftRadius: 12, borderBottomLeftRadius: 12, opacity: 1, transform: 'translateX(0)', transition: 'opacity 0.3s, transform 0.3s' }}
           >
             <h2 className="font-heading text-2xl text-hotpink mb-2">HOTMESS RADIO</h2>
             <ModernAudioPlayer streamUrl="https://listen.radioking.com/radio/736103/stream/802454" />
@@ -34,7 +30,7 @@ export default function StickyRadioDrawer() {
             <div className="mt-3 text-xs text-white/70">
               <span className="font-semibold">Now Playing:</span> <span className="text-hotpink">LIVE HOTMESS</span>
             </div>
-          </motion.aside>
+          </aside>
         )}
       </AnimatePresence>
     </div>

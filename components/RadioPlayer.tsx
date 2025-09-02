@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 
-export default function RadioPlayer({ streamUrl }) {
+export default function RadioPlayer({ streamUrl }: { streamUrl: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
 

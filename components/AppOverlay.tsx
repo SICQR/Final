@@ -1,28 +1,23 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
 
-export function AppOverlay({ open, children, onClose }: { open: boolean; children: React.ReactNode; onClose: () => void }) {
+export function AppOverlay({ open, children, onCloseAction }: { open: boolean; children: React.ReactNode; onCloseAction: () => void }) {
   return (
-    <AnimatePresence>
+    <>
       {open && (
-        <motion.div
+        <div
           className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
+          style={{ opacity: 1, transition: 'opacity 0.5s' }}
+          onClick={onCloseAction}
         >
-          <motion.div
+          <div
             className="bg-white rounded-xl p-8 shadow-xl"
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0.9 }}
+            style={{ transform: 'scale(1)', transition: 'transform 0.3s' }}
             onClick={e => e.stopPropagation()}
           >
             {children}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

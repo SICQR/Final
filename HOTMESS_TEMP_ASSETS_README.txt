@@ -1,0 +1,16 @@
+HOTMESS temporary assets (place under your repo's /public/images/...)
+
+shows/friday-live.jpg — Alt: 'Friday Live show poster.'
+shows/sunday-chill.jpg — Alt: 'Sunday Chill show poster.'
+shows/london-energy.jpg — Alt: 'London Energy show poster.'
+podcasts/hotmess-talks.jpg — Alt: 'HOTMESS Talks podcast artwork.'
+podcasts/queer-culture-now.jpg — Alt: 'Queer Culture Now podcast artwork.'
+podcasts/fashion-music-weekly.jpg — Alt: 'Fashion Music Weekly podcast artwork.'
+members/hero-mobile.jpg — Alt: 'HOTMESS Members hero artwork (mobile).'
+members/hero-desktop.jpg — Alt: 'HOTMESS Members hero artwork (desktop).'
+lookbook/01-own-your-mess.jpg — Alt: 'Editorial lookbook image with HOTMESS typography.'
+lookbook/02-editorial.jpg — Alt: 'Editorial lookbook image.'
+branding/logo-hotmess.svg — Alt: 'HOTMESS logo mark.'
+branding/wordmark.svg — Alt: 'HOTMESS wordmark.'
+stickers/hm-sticker-01.png — Alt: 'Sticker reading OWN YOUR MESS.'
+stickers/hm-sticker-02.png — Alt: 'Sticker reading LOUD / RESPONSIBLE.'

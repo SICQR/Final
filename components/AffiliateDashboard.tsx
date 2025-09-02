@@ -1,5 +1,5 @@
 "use client";
-import QRCode from "qrcode.react";
+import { QRCodeSVG } from "qrcode.react";
 import { useState } from "react";
 export default function AffiliateDashboard() {
   const [code] = useState("DEMOAFFILIATE123");
@@ -8,7 +8,7 @@ export default function AffiliateDashboard() {
   return (
     <div className="bg-white/10 border border-white/30 rounded-xl p-6 flex flex-col items-center">
       <div className="mb-4">
-        <QRCode value={`https://hotmess.com/?ref=${code}`} size={96} fgColor="#ff1981" />
+  <QRCodeSVG value={`https://hotmess.com/?ref=${code}`} size={96} fgColor="#ff1981" />
       </div>
       <div className="mb-2 font-bold">Your Affiliate Code:</div>
       <div className="mb-4 px-4 py-2 rounded bg-black/30 text-hotpink font-mono">{code}</div>

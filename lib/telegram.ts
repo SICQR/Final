@@ -23,7 +23,7 @@ export async function createTelegramInviteLink(userId: string) {
       creates_join_request: true
     })
   });
-  const json = await res.json();
+  const json = await res.json() as { result?: { invite_link?: string } };
   return json.result?.invite_link;
 }
 

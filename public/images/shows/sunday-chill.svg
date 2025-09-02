@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#000"/>
+  <rect x="60" y="540" width="140" height="8" fill="#FF5300"/>
+  <text x="60" y="520" fill="#fff" font-family="Inter,Arial,Helvetica,sans-serif" font-size="96" font-weight="900">SUNDAY CHILL</text>
+  <text x="60" y="590" fill="#ddd" font-family="Inter,Arial,Helvetica,sans-serif" font-size="36">Low + slow. Aftercare vibe.</text>
+</svg>

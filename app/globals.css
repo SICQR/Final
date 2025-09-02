@@ -1,20 +1,48 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root{
+  --bg:#000; --fg:#fff; --accent:#FF5300; --muted:#8A8A8A;
+  --radius:12px;
+  --shadow:0 6px 24px rgba(0,0,0,.35);
+  --font: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --brand: #ff5300;
 }
 
-html, body {
-  @apply bg-white text-black;
-  font-size: 17px;
+html,body{height:100%; background:var(--bg); color:var(--fg); font-family:var(--font); line-height:1.35; font-size:17px;}
+
+h1,h2,h3{font-weight:900; letter-spacing:.4px; margin:0 0 .5rem}
+h1{font-size:clamp(24px,5vw,40px)}
+h2{font-size:clamp(20px,3.6vw,28px)}
+p,small{margin:0 0 .75rem}
+
+a{color:inherit; text-decoration:none}
+a:hover{opacity:.9}
+
+/* Buttons used in our pages */
+.btnPrimary,.btnGhost{
+  display:inline-block; padding:10px 14px; border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,.24); transition:transform .08s ease;
+}
+.btnPrimary{ background:var(--accent); color:#000; border-color:transparent; font-weight:700 }
+.btnPrimary:active,.btnGhost:active{ transform:translateY(1px) }
+.btnGhost{ background:transparent; color:var(--fg) }
+
+/* Card shell used on grids */
+.card{
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  background:rgba(255,255,255,.02);
 }
 
-a { @apply underline underline-offset-4 decoration-brand; }
-.btn {
-  @apply inline-flex items-center justify-center px-4 py-2 rounded-2xl font-semibold;
-  background: var(--brand); color: white;
-}
-.card { @apply rounded-2xl border p-4 shadow-sm; }
-.sticky-dock { @apply fixed bottom-0 left-0 right-0 z-40 border-t bg-white/90 backdrop-blur; }
+/* Footer nav */
+footer a{ opacity:.85 }
+footer a:hover{ opacity:1 }
+
+/* Utility */
+.grid{ display:grid; gap:12px }
+.grid-auto{ grid-template-columns:repeat(auto-fit,minmax(220px,1fr)) }

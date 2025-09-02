@@ -11,12 +11,12 @@ async function sendMessage(token: string, chatId: number | string, text: string)
   });
 }
 
-export async function POST(req: NextRequest, { params }: { params: { command: string } }) {
+export async function POST(req: NextRequest, context: any) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   if (!token) return NextResponse.json({ error: "bot token missing" }, { status: 500 });
 
   const body = await req.json().catch(() => ({}));
-  const command = (params.command || "").toLowerCase();
+  const command = (context?.params?.command || "").toLowerCase();
   const chatId = body.chat_id ?? body.chatId ?? body.chatID ?? body.chat ?? 0;
   const args = (body.args ?? body.text ?? "").toString().trim();
 
@@ -107,6 +107,6 @@ export async function POST(req: NextRequest, { params }: { params: { command: st
 }
 
 // Simple GET for browser smoke tests
-export async function GET(_: NextRequest, { params }: { params: { command: string } }) {
-  return NextResponse.json({ ok: true, command: params.command });
+export async function GET(request: NextRequest, context: any) {
+  return NextResponse.json({ ok: true, command: context?.params?.command });
 }

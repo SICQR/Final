@@ -1,0 +1,22 @@
+export default {
+  name: "drop",
+  type: "document",
+  title: "Drop",
+  fields: [
+    { name: "title", type: "string", title: "Title" },
+    { name: "slug", type: "slug", title: "Slug", options: { source: "title" } },
+    { name: "collection", type: "string", title: "Collection" },
+    { name: "heroImage", type: "image", title: "Hero Image" },
+    { name: "alt", type: "string", title: "Alt Text" },
+    { name: "description", type: "text", title: "Description" },
+    { name: "priceGBP", type: "number", title: "Price (GBP)" },
+    { name: "inventory", type: "number", title: "Inventory" },
+    { name: "publishAt", type: "datetime", title: "Publish At" },
+    { name: "isLive", type: "boolean", title: "Is Live" },
+    { name: "affiliateEnabled", type: "boolean", title: "Affiliate Enabled" },
+    { name: "affiliatePercent", type: "number", title: "Affiliate Percent" },
+    { name: "qrTarget", type: "string", title: "QR Target" },
+    { name: "careTag", type: "string", title: "Care Tag" },
+    { name: "regionalRestrictions", type: "string", title: "Regional Restrictions" },
+  ],
+};

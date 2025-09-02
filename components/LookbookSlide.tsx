@@ -2,7 +2,17 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function LookbookSlide({ imageUrl, title, subtitle, font, color, overlay, video }) {
+export type LookbookSlideProps = {
+  imageUrl: string;
+  title: string;
+  subtitle: string;
+  font: string;
+  color: string;
+  overlay: boolean;
+  video: string;
+};
+
+export default function LookbookSlide({ imageUrl, title, subtitle, font, color, overlay, video }: LookbookSlideProps) {
   return (
     <section className="relative snap-center min-w-full h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -17,10 +27,9 @@ export default function LookbookSlide({ imageUrl, title, subtitle, font, color, 
         />
       )}
       {/* Animated Overlay + Video */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { delay: 0.3 } }}
+      <div
         className={`absolute inset-0 ${overlay || "bg-black bg-opacity-40"}`}
+        style={{ opacity: 1, transition: 'opacity 0.3s', zIndex: 1 }}
       >
         {video && (
           <video
@@ -32,12 +41,11 @@ export default function LookbookSlide({ imageUrl, title, subtitle, font, color, 
             className="absolute inset-0 w-full h-full object-cover opacity-40"
           />
         )}
-      </motion.div>
+      </div>
       {/* Font overlays */}
-      <motion.div
-        initial={{ y: 80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1, transition: { delay: 0.5 } }}
+      <div
         className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
+        style={{ opacity: 1, transform: 'translateY(0)', transition: 'opacity 0.3s, transform 0.3s', zIndex: 2 }}
       >
         <h1 className={`${font || "font-heading text-6xl md:text-8xl"} ${color || "text-white"} drop-shadow-2xl mb-6`}>
           {title}
@@ -45,7 +53,7 @@ export default function LookbookSlide({ imageUrl, title, subtitle, font, color, 
         <p className="text-2xl md:text-4xl font-bold text-white drop-shadow-xl bg-black/40 rounded-xl px-4 py-2 inline-block">
           {subtitle}
         </p>
-      </motion.div>
+      </div>
     </section>
   );
 }

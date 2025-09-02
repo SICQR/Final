@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="180" viewBox="0 0 720 180">
+  <rect width="720" height="180" fill="black"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white"
+        font-family="Inter,Arial,Helvetica,sans-serif" font-size="84" font-weight="900" letter-spacing="2">HOTMESS</text>
+  <rect x="160" y="132" width="400" height="6" fill="rgb(255,83,0)"/>
+</svg>

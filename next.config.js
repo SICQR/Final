@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  experimental: { serverActions: { allowedOrigins: ["*"] } }
+  experimental: { serverActions: { allowedOrigins: ["*"] } },
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'cdn.shopify.com', pathname: '/s/files/**' },
+    ],
+  },
 };
-export default nextConfig;
+module.exports = nextConfig;

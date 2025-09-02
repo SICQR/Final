@@ -1,15 +1,12 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 export function ShopSearchBox() {
   const [query, setQuery] = useState("");
   return (
-    <motion.form
-      layout
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+    <form
       className="mb-6"
+      style={{ opacity: 1, transition: 'opacity 0.3s' }}
       onSubmit={e => e.preventDefault()}
     >
       <input
@@ -21,6 +18,6 @@ export function ShopSearchBox() {
         name="q"
         autoFocus
       />
-    </motion.form>
+    </form>
   );
 }

@@ -1,4 +1,4 @@
-use client;
+"use client";
 
 import { SITE } from "@/lib/constants";
 import { useEffect, useRef, useState } from "react";

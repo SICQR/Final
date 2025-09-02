@@ -1,3 +1,27 @@
+export type Product = {
+  handle: string;
+  image: string;
+  title: string;
+  collection: string;
+  priceCents: number;
+};
+
+export const PRODUCTS: Product[] = [
+  {
+    handle: "hotmess-tshirt",
+    image: "/icon-192.png",
+    title: "HOTMESS T-Shirt",
+    collection: "Apparel",
+    priceCents: 2500,
+  },
+  {
+    handle: "hotmess-hat",
+    image: "/icon-512.png",
+    title: "HOTMESS Hat",
+    collection: "Accessories",
+    priceCents: 1800,
+  },
+];
 export const SITE = {
   name: "HOTMESS London",
   routes: {

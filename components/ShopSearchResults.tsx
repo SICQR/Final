@@ -30,11 +30,9 @@ export function ShopSearchResults() {
         className="input input-bordered w-full mb-4"
       />
       <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 40 }}
+        <div
           className="grid sm:grid-cols-2 md:grid-cols-3 gap-4"
+          style={{ opacity: 1, transform: 'translateY(0)', transition: 'opacity 0.3s, transform 0.3s' }}
         >
           {results.map((p: any) => (
             <Link key={p.id} href={`/p/${p.handle}`} className="card block overflow-hidden">
@@ -54,7 +52,7 @@ export function ShopSearchResults() {
               </div>
             </Link>
           ))}
-        </motion.div>
+        </div>
       </AnimatePresence>
     </>
   );

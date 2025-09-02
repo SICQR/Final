@@ -1,13 +1,12 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 export function TelegramJoin({ userId }: { userId: string }) {
   const [invite, setInvite] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
   return (
-    <motion.div layout className="mb-4">
+    <div className="mb-4" style={{ transition: 'all 0.3s' }}>
       <button
         className="btn"
         disabled={busy}
@@ -26,6 +25,6 @@ export function TelegramJoin({ userId }: { userId: string }) {
           <a href={invite} target="_blank" rel="noopener" className="link">Open Telegram Room</a>
         </div>
       )}
-    </motion.div>
+    </div>
   );
 }

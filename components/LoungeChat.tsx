@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { EmojiPicker } from "emoji-picker-react";
+import EmojiPicker from "emoji-picker-react";
 import { fetchLoungeMessages, sendLoungeMessage, reportMessage } from "@/lib/lounge";
 import { useSession } from "@/lib/auth";
 
@@ -23,7 +22,7 @@ export default function LoungeChat() {
   }, [messages]);
 
   return (
-    <motion.div layout className="chat-box bg-white rounded-xl shadow-xl p-4">
+    <div className="chat-box bg-white rounded-xl shadow-xl p-4" style={{ transition: 'all 0.3s' }}>
       <div className="overflow-y-auto max-h-96">
         {messages.map((m) => (
           <div key={m.id} className="flex items-center mb-2">
@@ -42,7 +41,7 @@ export default function LoungeChat() {
         onSubmit={async (e) => {
           e.preventDefault();
           if (!text.trim()) return;
-          await sendLoungeMessage(text, user?.id);
+          await sendLoungeMessage(text);
           setText("");
           fetchLoungeMessages().then(setMessages);
         }}
@@ -61,6 +60,6 @@ export default function LoungeChat() {
         />
         <button className="btn" type="submit">Send</button>
       </form>
-    </motion.div>
+    </div>
   );
 }
