@@ -2,7 +2,7 @@ import { defineConfig } from "sanity";
 import schemas from "./schemas";
 
 export default defineConfig({
-  projectId: process.env.SANITY_PROJECT_ID,
+  projectId: process.env.SANITY_PROJECT_ID || "placeholder",
   dataset: process.env.SANITY_DATASET || "production",
   title: "HOTMESS CMS",
   schema: {

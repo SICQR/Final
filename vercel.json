@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "name": "hotmess-editorial-commerce",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next",
+      "config": {
+        "distDir": ".next"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/admin",
+      "dest": "/admin",
+      "headers": {
+        "cache-control": "no-cache"
+      }
+    }
+  ],
+  "env": {
+    "SANITY_PROJECT_ID": "@sanity_project_id",
+    "SANITY_DATASET": "@sanity_dataset",
+    "ADMIN_USER": "@admin_user",
+    "ADMIN_PASS": "@admin_pass"
+  },
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  }
+}
