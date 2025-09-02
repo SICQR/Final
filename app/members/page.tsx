@@ -1,15 +1,36 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./members.module.css";
 import ConsentGate from "@/components/ConsentGate";
 import { getMembersHero, urlFor } from "@/lib/sanity";
 
-export const metadata = {
-  title: "Members — HOTMESS London",
-  description: "XXX Private Room — men-only, 18+. Verified on Telegram.",
-};
+export default function MembersPage() {
+  const [hero, setHero] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-export default async function MembersPage() {
-  const hero = await getMembersHero();
+  useEffect(() => {
+    async function fetchHero() {
+      try {
+        const heroData = await getMembersHero();
+        setHero(heroData);
+      } catch (error) {
+        console.warn("Could not fetch members hero:", error);
+        setHero({
+          headline: "HOTMESS Members",
+          subhead: "Exclusive access for verified members"
+        });
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchHero();
+  }, []);
+
+  if (loading) {
+    return <div className="p-8 text-center">Loading...</div>;
+  }
 
   return (
     <main className={styles.page} aria-label="Members landing">
