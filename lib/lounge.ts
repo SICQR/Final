@@ -9,12 +9,7 @@ export function sendLoungeMessage(message: string) {
 }
 // Lounge logic helpers
 
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+import { getServerAdmin } from "./supabase";
 
 export async function getUserFromAuth(req: any) {
   // TODO: implement auth extraction from request/session
@@ -22,10 +17,21 @@ export async function getUserFromAuth(req: any) {
 }
 
 export async function logLoungeMessage(userId: string, message: string) {
-  await supabase.from("lounge_messages").insert({ user_id: userId, message });
+  try {
+    const supabase = getServerAdmin();
+    await supabase.from("lounge_messages").insert({ user_id: userId, message });
+  } catch (error: any) {
+    console.warn("Lounge logging not configured:", error?.message || "Unknown error");
+  }
 }
 
 export async function fetchLoungeMessages() {
-  const { data } = await supabase.from("lounge_messages").select("*").order("created_at", { ascending: false });
-  return data || [];
+  try {
+    const supabase = getServerAdmin();
+    const { data } = await supabase.from("lounge_messages").select("*").order("created_at", { ascending: false });
+    return data || [];
+  } catch (error: any) {
+    console.warn("Lounge fetching not configured:", error?.message || "Unknown error");
+    return [];
+  }
 }

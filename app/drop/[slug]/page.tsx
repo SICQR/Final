@@ -15,8 +15,16 @@ export default async function Page({ params }: any) {
   if (!ageConsent || ageConsent.value !== "yes") {
     redirect(`/legal/18-plus?next=/drop/${params.slug}`);
   }
-  const drop = await client.fetch(DROP_BY_SLUG, { slug: params.slug });
-  if (!drop) return <div className="p-8 text-center">Drop not found.</div>;
+  
+  let drop;
+  try {
+    drop = await client.fetch(DROP_BY_SLUG, { slug: params.slug });
+  } catch (error) {
+    console.warn("Could not fetch drop:", error);
+    drop = null;
+  }
+  
+  if (!drop) return <div className="p-8 text-center">Drop not found or content system not configured.</div>;
 
   return (
     <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center">

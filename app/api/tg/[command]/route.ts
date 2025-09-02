@@ -12,11 +12,12 @@ async function sendMessage(token: string, chatId: number | string, text: string)
 }
 
 export async function POST(req: NextRequest, context: any) {
+  const resolvedParams = await context.params;
   const token = process.env.TELEGRAM_BOT_TOKEN;
   if (!token) return NextResponse.json({ error: "bot token missing" }, { status: 500 });
 
   const body = await req.json().catch(() => ({}));
-  const command = (context?.params?.command || "").toLowerCase();
+  const command = (resolvedParams?.command || "").toLowerCase();
   const chatId = body.chat_id ?? body.chatId ?? body.chatID ?? body.chat ?? 0;
   const args = (body.args ?? body.text ?? "").toString().trim();
 
@@ -52,41 +53,49 @@ export async function POST(req: NextRequest, context: any) {
       }
       case "claim": {
         // Create affiliate row (id auto-generated)
-        const supabase = getServerAdmin();
-        const handle = args?.length ? args.replace(/[^\w-]/g, "").toLowerCase() : `user${chatId}`;
-        const display_name = handle;
-        const { data, error } = await supabase
-          .from("affiliates")
-          .insert([{ handle, display_name, tg_user_id: Number(chatId) }])
-          .select()
-          .single();
-        if (error && !String(error.message).includes("duplicate key")) throw error;
+        try {
+          const supabase = getServerAdmin();
+          const handle = args?.length ? args.replace(/[^\w-]/g, "").toLowerCase() : `user${chatId}`;
+          const display_name = handle;
+          const { data, error } = await supabase
+            .from("affiliates")
+            .insert([{ handle, display_name, tg_user_id: Number(chatId) }])
+            .select()
+            .single();
+          if (error && !String(error.message).includes("duplicate key")) throw error;
 
-        const joined = data?.id
-          ? `✅ Affiliate created: @${handle}`
-          : `ℹ️ You already have an affiliate: @${handle}`;
-        await sendMessage(token, chatId, `${joined}\nUse /stats to see your scans.`);
+          const joined = data?.id
+            ? `✅ Affiliate created: @${handle}`
+            : `ℹ️ You already have an affiliate: @${handle}`;
+          await sendMessage(token, chatId, `${joined}\nUse /stats to see your scans.`);
+        } catch (error) {
+          await sendMessage(token, chatId, "⚠️ Affiliate system not configured yet. Contact admin.");
+        }
         break;
       }
       case "stats": {
-        const supabase = getServerAdmin();
-        // find affiliate by tg_user_id
-        const { data: aff } = await supabase
-          .from("affiliates")
-          .select("id, handle")
-          .eq("tg_user_id", Number(chatId))
-          .maybeSingle();
-        if (!aff?.id) {
-          await sendMessage(token, chatId, "No affiliate found. Use /claim to register.");
-          break;
+        try {
+          const supabase = getServerAdmin();
+          // find affiliate by tg_user_id
+          const { data: aff } = await supabase
+            .from("affiliates")
+            .select("id, handle")
+            .eq("tg_user_id", Number(chatId))
+            .maybeSingle();
+          if (!aff?.id) {
+            await sendMessage(token, chatId, "No affiliate found. Use /claim to register.");
+            break;
+          }
+          const since = new Date(Date.now() - 30 * 24 * 3600 * 1000).toISOString();
+          const { count } = await supabase
+            .from("qr_scans")
+            .select("*", { count: "exact", head: true })
+            .eq("affiliate_id", aff.id)
+            .gte("scanned_at", since);
+          await sendMessage(token, chatId, `📈 Scans (30d) for @${aff.handle}: ${count || 0}`);
+        } catch (error) {
+          await sendMessage(token, chatId, "⚠️ Stats system not configured yet. Contact admin.");
         }
-        const since = new Date(Date.now() - 30 * 24 * 3600 * 1000).toISOString();
-        const { count } = await supabase
-          .from("qr_scans")
-          .select("*", { count: "exact", head: true })
-          .eq("affiliate_id", aff.id)
-          .gte("scanned_at", since);
-        await sendMessage(token, chatId, `📈 Scans (30d) for @${aff.handle}: ${count || 0}`);
         break;
       }
       case "broadcast":
@@ -108,5 +117,6 @@ export async function POST(req: NextRequest, context: any) {
 
 // Simple GET for browser smoke tests
 export async function GET(request: NextRequest, context: any) {
-  return NextResponse.json({ ok: true, command: context?.params?.command });
+  const resolvedParams = await context.params;
+  return NextResponse.json({ ok: true, command: resolvedParams?.command });
 }
