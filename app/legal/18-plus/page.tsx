@@ -1,7 +1,9 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export default function Page({ searchParams }: any) {
+export default async function Page({ searchParams }: any) {
+  const resolvedSearchParams = await searchParams;
+  
   async function setConsent() {
     "use server";
     const cookieStore = await cookies();
@@ -11,7 +13,7 @@ export default function Page({ searchParams }: any) {
       path: "/",
       httpOnly: false,
     });
-    redirect(searchParams.next || "/");
+    redirect(resolvedSearchParams.next || "/");
   }
 
   return (
