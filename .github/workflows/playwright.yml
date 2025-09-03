@@ -1,0 +1,24 @@
+name: Playwright E2E
+
+on:
+  pull_request:
+    branches: [ '**' ]
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: |
+          NEXT_PUBLIC_STREAM_URL="https://listen.radioking.com/radio/736103/stream/802454" npm run build
+      - name: Run Playwright tests
+        run: npx playwright test --forbid-only --reporter=list
+        env:
+          NEXT_PUBLIC_STREAM_URL: "https://listen.radioking.com/radio/736103/stream/802454"
