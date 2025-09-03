@@ -12,11 +12,7 @@
     "noEmit": true,
     "strict": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
+    "paths": { "@/*": ["*"] },
     "resolveJsonModule": true,
     "incremental": true,
     "skipLibCheck": true,

@@ -22,7 +22,7 @@ export default function LookbookEditor() {
   };
 
   return (
-    <motion.div layout>
+    <div layout>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input className="input" value={title} onChange={e => setTitle(e.target.value)} placeholder="Title" />
         <input className="input" value={subtitle} onChange={e => setSubtitle(e.target.value)} placeholder="Subtitle" />
@@ -32,6 +32,6 @@ export default function LookbookEditor() {
         <input className="input" value={video} onChange={e => setVideo(e.target.value)} placeholder="Overlay Video URL" />
         <button className="btn" disabled={saving}>{saving ? "Saving…" : "Save"}</button>
       </form>
-    </motion.div>
+    </div>
   );
 }
