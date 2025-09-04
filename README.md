@@ -52,15 +52,26 @@
 
 3. **Set Environment Variables in Vercel**
    - Go to your project settings in Vercel
-   - Add environment variables from `.env.example`:
-     - `SANITY_PROJECT_ID`
-     - `SANITY_DATASET`
-     - `ADMIN_USER`
-     - `ADMIN_PASS`
-     - `SHOPIFY_STORE_DOMAIN` (optional)
-     - `SHOPIFY_STOREFRONT_ACCESS_TOKEN` (optional)
-     - `TELEGRAM_BOT_TOKEN` (optional)
-     - `TELEGRAM_CHAT_ID` (optional)
+   - Navigate to "Environment Variables" tab
+   - Add the following variables from `.env.example`:
+     
+     **Required Variables:**
+     - `NEXT_PUBLIC_SANITY_PROJECT_ID` - Your Sanity project ID
+     - `NEXT_PUBLIC_SANITY_DATASET` - Sanity dataset (usually "production")
+     - `SANITY_PROJECT_ID` - Your Sanity project ID (same as above)
+     - `SANITY_DATASET` - Sanity dataset (same as above)
+     - `ADMIN_USER` - Admin username for /admin route
+     - `ADMIN_PASS` - Admin password for /admin route
+     - `NEXT_PUBLIC_SITE_URL` - Your domain (e.g., https://your-project.vercel.app)
+     
+     **Optional Variables:**
+     - `SANITY_API_WRITE_TOKEN` - For admin functionality
+     - `SANITY_READ_TOKEN` - For preview mode
+     - `SHOPIFY_STORE_DOMAIN` - Your Shopify store domain
+     - `SHOPIFY_STOREFRONT_ACCESS_TOKEN` - Shopify API token
+     - `TELEGRAM_BOT_TOKEN` - For notifications
+     - `TELEGRAM_CHAT_ID` - Telegram chat ID
+     - `REVALIDATION_SECRET` - For webhook revalidation
 
 4. **Deploy**
    - Hit deploy in Vercel dashboard

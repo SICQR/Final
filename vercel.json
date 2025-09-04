@@ -19,12 +19,6 @@
       }
     }
   ],
-  "env": {
-    "SANITY_PROJECT_ID": "@sanity_project_id",
-    "SANITY_DATASET": "@sanity_dataset",
-    "ADMIN_USER": "@admin_user",
-    "ADMIN_PASS": "@admin_pass"
-  },
   "functions": {
     "app/api/**/*.ts": {
       "maxDuration": 30
