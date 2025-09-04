@@ -31,3 +31,27 @@
     text-wrap: balance;
   }
 }
+
+:root {
+  --bg:#0a0a0a; --fg:#fafafa; --sub:#a3a3a3; --card:#121212; --line:#1f1f1f;
+  --brand-hot:#ff3b3b; --brand-acid:#bbff00;
+  /* ticker/header spacing helpers */
+  --ticker-height: 2.25rem; /* matches h-9 */
+  color-scheme: only dark;
+}
+html,body{background:var(--bg);color:var(--fg);}
+
+/* Prevent accidental horizontal scrolling from vw/translate animations */
+html, body { overflow-x: clip; }
+@supports not (overflow-x: clip) { html, body { overflow-x: hidden; } }
+
+/* helpers */
+.container{ @apply mx-auto max-w-7xl px-4; }
+.section{ @apply container py-16; }
+.link-muted{ @apply text-neutral-400 hover:text-white; }
+
+/* Ticker */
+.ticker{ mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent); }
+@keyframes marquee{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+.ticker-track{ animation:marquee var(--speed,28s) linear infinite; }
+.ticker:hover .ticker-track{ animation-play-state:paused; }

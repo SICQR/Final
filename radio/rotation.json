@@ -1,0 +1,30 @@
+{
+  "dayparts": {
+    "morning": {
+      "vo_frequency_minutes": 20,
+      "beds": [
+        "SW_Londons Filth Frequency A.mp3"
+      ]
+    },
+    "afternoon": {
+      "vo_frequency_minutes": 30,
+      "beds": [
+        "SW_Powered by the Mess in You.mp3"
+      ]
+    },
+    "evening": {
+      "vo_frequency_minutes": 45,
+      "beds": [
+        "SW_Londons Filth Frequency B.mp3"
+      ]
+    },
+    "late": {
+      "vo_frequency_minutes": 60,
+      "beds": []
+    }
+  },
+  "after_23": {
+    "interruptions": false,
+    "notes": "Uninterrupted mixes. No pop inserts."
+  }
+}

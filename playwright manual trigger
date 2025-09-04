@@ -1,0 +1,15 @@
+name: Playwright Manual Trigger
+
+on:
+  workflow_dispatch: # Allows manual triggering from GitHub UI
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run Playwright Tests
+        run: |
+          # Your Playwright test commands here
+          npx playwright test

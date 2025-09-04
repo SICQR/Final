@@ -1,0 +1,13 @@
+file,show,daypart,gain_db,cue_in_ms,cue_out_ms,notes
+SW_Master Hotmess Radio IN.mp3,Global,any,-1.0,0,2900,Master station intro
+SW_Master Hotmess Radio OUT.mp3,Global,any,-1.0,0,2800,Master station outro
+SW_Hand in Hand Is the Only Place to Land.mp3,Hand-in-Hand,afternoon,-2.0,500,2600,Exact tagline required (caps precise)
+T_Hand N Hand.mp3,Hand-in-Hand,afternoon,-2.0,0,0,Theme alt
+SW_Londons Filth Frequency A.mp3,Wake the Mess,morning,-2.0,0,0,Bed
+SW_Londons Filth Frequency B.mp3,Drive Time Mess,evening,-2.0,0,0,Bed
+SW_Powered by the Mess in You.mp3,Global,any,-2.0,0,0,Brand sting
+SW_You Aint Slept for 3 Days.mp3,Wake the Mess,morning,-2.0,0,0,Stinger
+T_Dial-a-Daddy.mp3,Dial-a-Daddy,afternoon,-2.0,0,0,Theme
+T_Dial-a-Daddy RE.mp3,Dial-a-Daddy,afternoon,-2.0,0,0,Retag
+T_Dial-a-Daddy RE.wav,Dial-a-Daddy,afternoon,-2.0,0,0,Retag (wav)
+VO_Dial-a-Daddy RE.wav,Dial-a-Daddy,afternoon,-2.0,0,0,VO
