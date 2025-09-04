@@ -1,0 +1,7 @@
+{
+  "shows": [
+    { "title": "HOTMESS LIVE", "host": "DJ Hot", "days": ["Wed","Thu","Fri"], "start": "20:00", "end": "22:00", "slug": "hotmess-live" },
+    { "title": "Morning Grind", "host": "Luna", "days": ["Mon","Tue","Wed","Thu","Fri"], "start": "09:00", "end": "11:00", "slug": "morning-grind" },
+    { "title": "Late Shift", "host": "Jax", "days": ["Sat","Sun"], "start": "23:00", "end": "02:00", "slug": "late-shift" }
+  ]
+}
