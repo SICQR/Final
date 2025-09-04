@@ -1,0 +1,1 @@
+export default function LookbookSlide({src,caption}:{src:string;caption?:string}){return(<figure className="space-y-2"><img src={src} alt={caption||"lookbook"} className="w-full"/>{caption&&<figcaption className="text-sm text-neutral-500">{caption}</figcaption>}</figure>)}

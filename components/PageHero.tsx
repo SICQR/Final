@@ -1,0 +1,1 @@
+export default function PageHero({title,subtitle}:{title:string;subtitle?:string}){return(<section className="py-10"><h1 className="text-4xl font-bold">{title}</h1>{subtitle&&<p className="text-neutral-600 mt-2">{subtitle}</p>}</section>)}
