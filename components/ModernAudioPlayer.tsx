@@ -1,0 +1,1 @@
+"use client";import {useRef} from "react";export default function ModernAudioPlayer({src}:{src:string}){const ref=useRef<HTMLAudioElement>(null);return(<div className="p-3 border rounded"><audio controls ref={ref} src={src}/></div>)}

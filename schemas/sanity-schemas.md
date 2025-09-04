@@ -1,0 +1,11 @@
+# Sanity Schemas (Outline)
+- show: title, slug, days[], startTime, endTime, host, aiVoices[], musicTriggers[], segments[]
+- dj: name, slug, bio, socials, mixLinks[], image
+- drop: title, slug, start, end, products[], legendThreshold
+- collection: title, handle, description, image
+- product: title, handle, price, sizes[], images[], shopifyId
+- lookbookItem: title, images[], caption, photographer
+- policy: key, title, content
+- audioPack: files[], notes
+- stylePack: tokens (colors, fonts, spacing)
+- membersHero: headline, subcopy, image, ctaLinks[]

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center">
@@ -8,12 +10,9 @@ export default function NotFound() {
         <p className="text-2xl text-gray-300 mb-8">
           This page ghosted
         </p>
-        <a 
-          href="/"
-          className="btn-primary"
-        >
+        <Link href="/" className="btn-primary">
           Take me home
-        </a>
+        </Link>
       </div>
     </div>
   );

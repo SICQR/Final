@@ -34,7 +34,7 @@ export default function RadioPage() {
           </p>
 
           <div className="text-center">
-            <button className="btn-primary mr-4">
+            <button data-player className="btn-primary mr-4">
               ▶ Listen Live
             </button>
             <button className="btn-secondary">

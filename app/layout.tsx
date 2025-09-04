@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import React from "react";
 import "./globals.css";
+import Ticker from "@/components/Ticker";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "HOTMESS London — The Filth Frequency",
@@ -30,6 +32,8 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
+        <Ticker />
+        <Header />
         <main>{children}</main>
       </body>
     </html>

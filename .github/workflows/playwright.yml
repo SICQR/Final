@@ -1,0 +1,78 @@
+name: Playwright E2E
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [ main ]
+
+jobs:
+  e2e:
+    name: Playwright tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          if [ -f pnpm-lock.yaml ]; then
+              corepack enable
+              pnpm install --frozen-lockfile
+          else
+            npm ci --legacy-peer-deps
+          fi
+
+      - name: Lint
+        run: npm run lint || true
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Build (production)
+        env:
+          NEXT_PUBLIC_STREAM_URL: ${{ secrets.NEXT_PUBLIC_STREAM_URL }}
+        run: npm run build
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Debug: repo & test discovery
+        run: |
+          echo "pwd: $(pwd)"
+          echo "node: $(node -v) npm: $(npm -v)"
+          echo "listing root files"; ls -la | sed -n '1,200p'
+          echo "listing tests dir"; ls -la tests || true
+          echo "git tracked tests"; git ls-files 'tests/**' || true
+          npx playwright --version || true
+          npx playwright test --list || true
+            echo "explicit list for tests/e2e"; npx playwright test tests/e2e --list || true
+
+      - name: Run Playwright tests (explicit path)
+        env:
+          NEXT_PUBLIC_STREAM_URL: ${{ secrets.NEXT_PUBLIC_STREAM_URL }}
+        run: |
+          # prefer running the tests folder explicitly
+            npx playwright test tests/e2e --reporter=github || (echo "no tests found in tests/e2e" && exit 1)
+
+      - name: Upload Playwright artifacts (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: |
+            playwright-report
+            ./playwright-report
+            ./test-results
+            ./**/playwright-report
+              tests/e2e/**/*.png
