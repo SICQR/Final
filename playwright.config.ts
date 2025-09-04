@@ -18,8 +18,9 @@ export default defineConfig({
   // webServer: start a prod build in CI, but use/reuse the dev server locally.
   // - In CI (process.env.CI set), build and start the production server so tests run in a stable environment.
   // - Locally, run `npm run dev` if no server exists, otherwise reuse existing server.
+  // In CI we expect the workflow to build; Playwright will start the production server.
   webServer: process.env.CI ? {
-    command: 'npm ci && NEXT_PUBLIC_STREAM_URL=$NEXT_PUBLIC_STREAM_URL npm run build && NEXT_PUBLIC_STREAM_URL=$NEXT_PUBLIC_STREAM_URL npm run start',
+    command: 'NEXT_PUBLIC_STREAM_URL=$NEXT_PUBLIC_STREAM_URL npm run start',
     url: 'http://localhost:3000',
     timeout: 120_000,
     reuseExistingServer: false,
