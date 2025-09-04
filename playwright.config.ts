@@ -13,8 +13,17 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] }
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] }
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] }
     }
   ],
+
   // webServer: start a prod build in CI, but use/reuse the dev server locally.
   // - In CI (process.env.CI set), build and start the production server so tests run in a stable environment.
   // - Locally, run `npm run dev` if no server exists, otherwise reuse existing server.
