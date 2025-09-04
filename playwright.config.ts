@@ -6,17 +6,28 @@ export default defineConfig({
   expect: { timeout: 5_000 },
   fullyParallel: false,
   reporter: [['list'], ['html', { open: 'never' }]],
+  use: {
+    baseURL: 'http://localhost:3000',
+  },
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] }
     }
   ],
-  webServer: {
-    command: 'npm run start',
+  // webServer: start a prod build in CI, but use/reuse the dev server locally.
+  // - In CI (process.env.CI set), build and start the production server so tests run in a stable environment.
+  // - Locally, run `npm run dev` if no server exists, otherwise reuse existing server.
+  webServer: process.env.CI ? {
+    command: 'npm ci && NEXT_PUBLIC_STREAM_URL=$NEXT_PUBLIC_STREAM_URL npm run build && NEXT_PUBLIC_STREAM_URL=$NEXT_PUBLIC_STREAM_URL npm run start',
     url: 'http://localhost:3000',
     timeout: 120_000,
     reuseExistingServer: false,
+  } : {
+    command: 'npm run dev',
+    url: 'http://localhost:3000',
+    timeout: 120_000,
+    reuseExistingServer: true,
   },
   snapshotDir: './tests/e2e/__snapshots__',
 });
