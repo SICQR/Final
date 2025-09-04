@@ -1,0 +1,200 @@
+{
+  "generated_at": "2025-09-04T16:46:52.422722Z",
+  "base_path": "/images/home",
+  "images": [
+    {
+      "slug": "hero_always-too-much",
+      "section": "hero",
+      "alt": "Crowned man under headline 'Always Too Much, Yet Never Enough' on draped backdrop.",
+      "sources": [
+        {
+          "slug": "hero_always-too-much",
+          "section": "hero",
+          "alt": "Crowned man under headline 'Always Too Much, Yet Never Enough' on draped backdrop.",
+          "width": 1344,
+          "height": 704,
+          "public_path": "/images/home/hero/hero_always-too-much_1344w.jpg"
+        },
+        {
+          "slug": "hero_always-too-much",
+          "section": "hero",
+          "alt": "Crowned man under headline 'Always Too Much, Yet Never Enough' on draped backdrop.",
+          "width": 1280,
+          "height": 670,
+          "public_path": "/images/home/hero/hero_always-too-much_1280w.jpg"
+        },
+        {
+          "slug": "hero_always-too-much",
+          "section": "hero",
+          "alt": "Crowned man under headline 'Always Too Much, Yet Never Enough' on draped backdrop.",
+          "width": 800,
+          "height": 419,
+          "public_path": "/images/home/hero/hero_always-too-much_800w.jpg"
+        },
+        {
+          "slug": "hero_always-too-much",
+          "section": "hero",
+          "alt": "Crowned man under headline 'Always Too Much, Yet Never Enough' on draped backdrop.",
+          "width": 400,
+          "height": 210,
+          "public_path": "/images/home/hero/hero_always-too-much_400w.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "product_hnh-mess-bottle",
+      "section": "products",
+      "alt": "HNH Mess 250ml bottle shot inside swirling glass bowl, teal and sand tones.",
+      "sources": [
+        {
+          "slug": "product_hnh-mess-bottle",
+          "section": "products",
+          "alt": "HNH Mess 250ml bottle shot inside swirling glass bowl, teal and sand tones.",
+          "width": 1808,
+          "height": 2048,
+          "public_path": "/images/home/products/product_hnh-mess-bottle_1808w.jpg"
+        },
+        {
+          "slug": "product_hnh-mess-bottle",
+          "section": "products",
+          "alt": "HNH Mess 250ml bottle shot inside swirling glass bowl, teal and sand tones.",
+          "width": 1280,
+          "height": 1450,
+          "public_path": "/images/home/products/product_hnh-mess-bottle_1280w.jpg"
+        },
+        {
+          "slug": "product_hnh-mess-bottle",
+          "section": "products",
+          "alt": "HNH Mess 250ml bottle shot inside swirling glass bowl, teal and sand tones.",
+          "width": 800,
+          "height": 906,
+          "public_path": "/images/home/products/product_hnh-mess-bottle_800w.jpg"
+        },
+        {
+          "slug": "product_hnh-mess-bottle",
+          "section": "products",
+          "alt": "HNH Mess 250ml bottle shot inside swirling glass bowl, teal and sand tones.",
+          "width": 400,
+          "height": 453,
+          "public_path": "/images/home/products/product_hnh-mess-bottle_400w.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "hero_hotmess-bw-portrait",
+      "section": "hero",
+      "alt": "Black-and-white portrait with HOTMESS masthead and line 'Always too much, yet never enough.'",
+      "sources": [
+        {
+          "slug": "hero_hotmess-bw-portrait",
+          "section": "hero",
+          "alt": "Black-and-white portrait with HOTMESS masthead and line 'Always too much, yet never enough.'",
+          "width": 1024,
+          "height": 1536,
+          "public_path": "/images/home/hero/hero_hotmess-bw-portrait_1024w.jpg"
+        },
+        {
+          "slug": "hero_hotmess-bw-portrait",
+          "section": "hero",
+          "alt": "Black-and-white portrait with HOTMESS masthead and line 'Always too much, yet never enough.'",
+          "width": 800,
+          "height": 1200,
+          "public_path": "/images/home/hero/hero_hotmess-bw-portrait_800w.jpg"
+        },
+        {
+          "slug": "hero_hotmess-bw-portrait",
+          "section": "hero",
+          "alt": "Black-and-white portrait with HOTMESS masthead and line 'Always too much, yet never enough.'",
+          "width": 400,
+          "height": 600,
+          "public_path": "/images/home/hero/hero_hotmess-bw-portrait_400w.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "art_dial-a-daddy",
+      "section": "art",
+      "alt": "Pink retro London phone booth illustration titled 'Dial\u2011a\u2011Daddy' with stylized droplets.",
+      "sources": [
+        {
+          "slug": "art_dial-a-daddy",
+          "section": "art",
+          "alt": "Pink retro London phone booth illustration titled 'Dial\u2011a\u2011Daddy' with stylized droplets.",
+          "width": 736,
+          "height": 1312,
+          "public_path": "/images/home/art/art_dial-a-daddy_736w.jpg"
+        },
+        {
+          "slug": "art_dial-a-daddy",
+          "section": "art",
+          "alt": "Pink retro London phone booth illustration titled 'Dial\u2011a\u2011Daddy' with stylized droplets.",
+          "width": 400,
+          "height": 713,
+          "public_path": "/images/home/art/art_dial-a-daddy_400w.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "editorial_dj-turntable",
+      "section": "editorial",
+      "alt": "Hands on a vinyl turntable in a graffiti-lit warehouse, orange practical lights.",
+      "sources": [
+        {
+          "slug": "editorial_dj-turntable",
+          "section": "editorial",
+          "alt": "Hands on a vinyl turntable in a graffiti-lit warehouse, orange practical lights.",
+          "width": 1024,
+          "height": 1024,
+          "public_path": "/images/home/editorial/editorial_dj-turntable_1024w.jpg"
+        },
+        {
+          "slug": "editorial_dj-turntable",
+          "section": "editorial",
+          "alt": "Hands on a vinyl turntable in a graffiti-lit warehouse, orange practical lights.",
+          "width": 800,
+          "height": 800,
+          "public_path": "/images/home/editorial/editorial_dj-turntable_800w.jpg"
+        },
+        {
+          "slug": "editorial_dj-turntable",
+          "section": "editorial",
+          "alt": "Hands on a vinyl turntable in a graffiti-lit warehouse, orange practical lights.",
+          "width": 400,
+          "height": 400,
+          "public_path": "/images/home/editorial/editorial_dj-turntable_400w.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "set_hotmess-on-air",
+      "section": "editorial",
+      "alt": "Neon sign 'HOTMESS LONDON ON AIR' reflecting in glossy black liquid on studio floor.",
+      "sources": [
+        {
+          "slug": "set_hotmess-on-air",
+          "section": "editorial",
+          "alt": "Neon sign 'HOTMESS LONDON ON AIR' reflecting in glossy black liquid on studio floor.",
+          "width": 960,
+          "height": 1024,
+          "public_path": "/images/home/editorial/set_hotmess-on-air_960w.jpg"
+        },
+        {
+          "slug": "set_hotmess-on-air",
+          "section": "editorial",
+          "alt": "Neon sign 'HOTMESS LONDON ON AIR' reflecting in glossy black liquid on studio floor.",
+          "width": 800,
+          "height": 853,
+          "public_path": "/images/home/editorial/set_hotmess-on-air_800w.jpg"
+        },
+        {
+          "slug": "set_hotmess-on-air",
+          "section": "editorial",
+          "alt": "Neon sign 'HOTMESS LONDON ON AIR' reflecting in glossy black liquid on studio floor.",
+          "width": 400,
+          "height": 427,
+          "public_path": "/images/home/editorial/set_hotmess-on-air_400w.jpg"
+        }
+      ]
+    }
+  ]
+}
