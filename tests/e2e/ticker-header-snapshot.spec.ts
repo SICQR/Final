@@ -2,15 +2,29 @@ import { test, expect } from '@playwright/test';
 
 test('ticker + header visual snapshot', async ({ page }) => {
   await page.goto('/');
-  // Make visuals deterministic: disable animations/transitions and wait for layout
-  await page.addStyleTag({ content: `* { transition: none !important; animation: none !important; }` });
-  await page.waitForLoadState('networkidle');
-  await page.waitForTimeout(150);
+  await page.addStyleTag({ content: `
+    *{animation:none!important;transition:none!important}
+    [data-test="ticker"]{animation:none!important}
+  `});
 
-  // capture a screenshot of the top 120px (ticker + header)
-  const width = await page.evaluate(() => document.documentElement.clientWidth || window.innerWidth);
-  const height = 120;
-  const shot = await page.screenshot({ fullPage: false, clip: { x: 0, y: 0, width, height } });
-  // Save visual snapshot (Playwright will compare on subsequent runs)
+  const banner = page.getByRole('banner');
+  const ticker = page.locator('[data-test="ticker"]');
+
+  await expect(banner).toBeVisible();
+  await expect(ticker).toBeVisible();
+
+  const vp = page.viewportSize()!;
+  const b1 = await banner.boundingBox();
+  const b2 = await ticker.boundingBox();
+
+  const top = Math.floor(Math.min(b1?.y ?? 0, b2?.y ?? 0));
+  const bottom = Math.ceil(Math.max(
+    (b1 ? b1.y + b1.height : 0),
+    (b2 ? b2.y + b2.height : 0)
+  ));
+  const height = Math.min(vp.height, Math.max(80, bottom - top));
+  const width = vp.width;
+
+  const shot = await page.screenshot({ clip: { x: 0, y: top, width, height } });
   expect(shot).toMatchSnapshot('top-ticker-header.png', { maxDiffPixelRatio: 0.02 });
 });
