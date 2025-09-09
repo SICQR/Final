@@ -7,7 +7,12 @@ export const config = {
 export default function middleware(req: NextRequest) {
   const user = process.env.ADMIN_USER;
   const pass = process.env.ADMIN_PASS;
-  if (!user || !pass) return NextResponse.next(); // no gate if not configured
+  
+  // If no admin credentials are configured, allow access but log warning
+  if (!user || !pass) {
+    console.warn("⚠️  ADMIN_USER and ADMIN_PASS not configured. Admin route is unprotected.");
+    return NextResponse.next();
+  }
 
   const auth = req.headers.get("authorization");
   if (!auth?.startsWith("Basic ")) {
@@ -16,10 +21,16 @@ export default function middleware(req: NextRequest) {
       headers: { "WWW-Authenticate": 'Basic realm="HOTMESS Admin"' }
     });
   }
-  const decoded = Buffer.from(auth.slice(6), "base64").toString("utf8");
-  const [u, p] = decoded.split(":");
-  if (u !== user || p !== pass) {
-    return new NextResponse("Forbidden", { status: 403 });
+  
+  try {
+    const decoded = Buffer.from(auth.slice(6), "base64").toString("utf8");
+    const [u, p] = decoded.split(":");
+    if (u !== user || p !== pass) {
+      return new NextResponse("Forbidden", { status: 403 });
+    }
+  } catch (error) {
+    return new NextResponse("Invalid auth format", { status: 400 });
   }
+  
   return NextResponse.next();
 }
