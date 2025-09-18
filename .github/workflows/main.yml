@@ -1,4 +1,4 @@
-name: Playwright E2E
+name: CI/CD Pipeline
 
 on:
   pull_request:
@@ -6,11 +6,44 @@ on:
   push:
     branches: [ main ]
 
+env:
+  NODE_VERSION: '18'
+
 jobs:
+  lint-and-build:
+    name: Lint and Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linting
+        run: npm run lint
+
+      - name: Build application
+        env:
+          NEXT_PUBLIC_STREAM_URL: ${{ secrets.NEXT_PUBLIC_STREAM_URL }}
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
+        run: npm run build
+
   e2e:
-    name: Playwright tests
+    name: E2E Tests (Playwright)
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    needs: lint-and-build
 
     steps:
       - name: Checkout
@@ -21,7 +54,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
       - name: Install dependencies
@@ -30,6 +63,7 @@ jobs:
       - name: Build (production)
         env:
           NEXT_PUBLIC_STREAM_URL: ${{ secrets.NEXT_PUBLIC_STREAM_URL }}
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
         run: npm run build
 
       - name: Install Playwright browsers
@@ -38,6 +72,7 @@ jobs:
       - name: Run Playwright tests
         env:
           NEXT_PUBLIC_STREAM_URL: ${{ secrets.NEXT_PUBLIC_STREAM_URL }}
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
         run: npx playwright test --reporter=github
 
       - name: Upload Playwright traces/artifacts (on failure)
@@ -46,3 +81,32 @@ jobs:
         with:
           name: playwright-artifacts
           path: playwright-report || ./playwright-report || ./test-results || ./**/playwright-report
+
+  deploy:
+    name: Deploy to Vercel
+    runs-on: ubuntu-latest
+    needs: [lint-and-build, e2e]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-args: '--prod'
+          vercel-org-id: ${{ secrets.ORG_ID }}
+          vercel-project-id: ${{ secrets.PROJECT_ID }}
+
+# TODO: Future enhancements for production deployment
+# - Add security scanning (Snyk, CodeQL)
+# - Add performance testing and lighthouse CI
+# - Add unit/integration tests when test suite is implemented
+# - Add automatic semantic versioning
+# - Add Slack/Discord notifications for deployments
+# - Add staging environment deployment for PRs
+# - Add database migration steps (when backend is implemented)
+# - Add cache invalidation for CDN
