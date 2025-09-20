@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Button, Card } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "About — HOTMESS",
@@ -22,7 +23,7 @@ export default function AboutPage() {
             </p>
 
             <div className="grid md:grid-cols-2 gap-12 mt-16">
-              <div>
+              <Card variant="dark">
                 <h2 className="text-3xl font-heading font-bold mb-6 text-hung">
                   What We Do
                 </h2>
@@ -33,9 +34,9 @@ export default function AboutPage() {
                   <li>• Admin/editor UI for content management</li>
                   <li>• Affiliate dashboard with QR codes, stats, and payouts</li>
                 </ul>
-              </div>
+              </Card>
 
-              <div>
+              <Card variant="dark">
                 <h2 className="text-3xl font-heading font-bold mb-6 text-hotpink">
                   Our Mission
                 </h2>
@@ -44,21 +45,21 @@ export default function AboutPage() {
                   HOTMESS creates spaces where queer expression meets cutting-edge technology, 
                   where aftercare isn't an afterthought but the foundation of everything we build.
                 </p>
-              </div>
+              </Card>
             </div>
 
-            <div className="text-center mt-16 p-8 bg-gray-900 rounded-lg border border-gray-800">
+            <Card variant="gradient" className="text-center mt-16">
               <h3 className="text-2xl font-heading font-bold mb-4 text-hung">
                 Join the Community
               </h3>
               <p className="text-gray-300 mb-6">
                 Connect with like-minded individuals in our inclusive space.
               </p>
-              <div className="flex justify-center space-x-4">
-                <button className="btn-primary">Join Discord</button>
-                <button className="btn-secondary">Follow on Social</button>
+              <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <Button variant="primary">Join Discord</Button>
+                <Button variant="secondary">Follow on Social</Button>
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </div>

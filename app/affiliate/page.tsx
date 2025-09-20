@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { AffiliateQR } from "@/components/AffiliateQR";
+import { Card } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Earn with your mess — HOTMESS Affiliate",
@@ -19,7 +21,7 @@ export default function AffiliatePage() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-gray-900 p-8 rounded-lg border border-gray-800">
+            <Card variant="dark">
               <div className="text-4xl mb-4">1️⃣</div>
               <h3 className="text-xl font-heading font-bold mb-4 text-hotpink">
                 Tap /claim in Telegram
@@ -27,9 +29,9 @@ export default function AffiliatePage() {
               <p className="text-gray-400">
                 Connect with our bot and get your unique affiliate link instantly.
               </p>
-            </div>
+            </Card>
 
-            <div className="bg-gray-900 p-8 rounded-lg border border-gray-800">
+            <Card variant="dark">
               <div className="text-4xl mb-4">2️⃣</div>
               <h3 className="text-xl font-heading font-bold mb-4 text-hung">
                 Share your link/QR
@@ -37,9 +39,9 @@ export default function AffiliatePage() {
               <p className="text-gray-400">
                 Post on social, share with friends, or display your QR code anywhere.
               </p>
-            </div>
+            </Card>
 
-            <div className="bg-gray-900 p-8 rounded-lg border border-gray-800">
+            <Card variant="dark">
               <div className="text-4xl mb-4">3️⃣</div>
               <h3 className="text-xl font-heading font-bold mb-4 text-hotpink">
                 Get paid monthly
@@ -47,38 +49,22 @@ export default function AffiliatePage() {
               <p className="text-gray-400">
                 Earn commission on every sale through your link. Direct payouts, no delays.
               </p>
-            </div>
+            </Card>
           </div>
 
-          <div className="bg-gray-900 p-8 rounded-lg border border-gray-800 mb-12">
-            <h2 className="text-3xl font-heading font-bold mb-6 text-hung">
-              Scan. Grrr. Repeat.
-            </h2>
-            <p className="text-lg text-gray-300 mb-6">
-              Your link, your cut, your crown.
-            </p>
-            <div className="flex justify-center items-center space-x-8">
-              <div className="text-center">
-                <div className="w-32 h-32 bg-white rounded-lg flex items-center justify-center mb-4">
-                  <div className="text-black font-bold">QR CODE</div>
-                </div>
-                <p className="text-sm text-gray-400">Your unique QR code</p>
-              </div>
-              <div className="text-left">
-                <p className="text-sm text-gray-400 mb-2">Commission Rate:</p>
-                <p className="text-3xl font-bold text-hung">15%</p>
-                <p className="text-sm text-gray-400 mt-4">Minimum Payout:</p>
-                <p className="text-xl font-semibold text-hotpink">£25</p>
-              </div>
-            </div>
-          </div>
+          <AffiliateQR />
 
           <div className="flex justify-center space-x-4">
-            <button className="btn-primary">
+            <a 
+              href="https://t.me/hotmessldn_bot" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
               Start Earning
-            </button>
-            <button className="btn-secondary">
-              View Dashboard
+            </a>
+            <button className="btn-secondary" disabled>
+              View Dashboard (Coming Soon)
             </button>
           </div>
         </div>

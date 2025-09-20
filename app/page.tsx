@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
+import { Button, Card } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "HOTMESS London — The Filth Frequency",
@@ -29,14 +30,20 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center mb-16">
-            <Link href="/radio" className="btn-primary">
-              Listen Live
+            <Link href="/radio">
+              <Button variant="primary" size="lg">
+                Listen Live
+              </Button>
             </Link>
-            <Link href="/shop" className="btn-secondary">
-              Shop Drops
+            <Link href="/shop">
+              <Button variant="secondary" size="lg">
+                Shop Drops
+              </Button>
             </Link>
-            <Link href="/affiliate" className="btn-primary">
-              Join the Room
+            <Link href="/affiliate">
+              <Button variant="primary" size="lg">
+                Join the Room
+              </Button>
             </Link>
           </div>
         </div>
@@ -47,7 +54,7 @@ export default function HomePage() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Radio */}
-            <div className="text-center p-8 border border-gray-800 rounded-lg">
+            <Card variant="dark" className="text-center">
               <h3 className="text-2xl font-heading font-bold mb-4 text-hotpink">
                 HOTMESS RADIO
               </h3>
@@ -57,10 +64,10 @@ export default function HomePage() {
               <p className="text-sm italic text-hung">
                 &ldquo;Press play, lover. We&apos;ll do the rest.&rdquo;
               </p>
-            </div>
+            </Card>
 
             {/* Drops */}
-            <div className="text-center p-8 border border-gray-800 rounded-lg">
+            <Card variant="dark" className="text-center">
               <h3 className="text-2xl font-heading font-bold mb-4 text-hung">
                 Drops
               </h3>
@@ -70,10 +77,10 @@ export default function HomePage() {
               <p className="text-sm italic text-hotpink">
                 &ldquo;Wear the mess. Own the night.&rdquo;
               </p>
-            </div>
+            </Card>
 
             {/* Aftercare */}
-            <div className="text-center p-8 border border-gray-800 rounded-lg">
+            <Card variant="dark" className="text-center">
               <h3 className="text-2xl font-heading font-bold mb-4 text-hotpink">
                 Aftercare (HNHMESS)
               </h3>
@@ -83,7 +90,7 @@ export default function HomePage() {
               <p className="text-sm italic text-hung">
                 &ldquo;Hydrate, breathe, check in.&rdquo;
               </p>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
