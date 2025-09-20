@@ -1,10 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
+import WeatherWidget from "@/components/WeatherWidget";
+import FeaturedDrops from "@/components/FeaturedDrops";
+import CommunityFeed from "@/components/CommunityFeed";
 
 export const metadata: Metadata = {
   title: "HOTMESS London — The Filth Frequency",
-  description: "Queer engine. Streamed. Scanned. Worn. Shop limited drops, stream HOTMESS RADIO, and earn with every scan.",
+  description: "Shop limited drops, stream HOTMESS RADIO, and earn with every scan. For the boys who stayed up, stayed soft, and still showed up.",
 };
 
 export default function HomePage() {
@@ -39,8 +42,32 @@ export default function HomePage() {
               Join the Room
             </Link>
           </div>
+
+          {/* Live Info Bar */}
+          <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-4 mb-8">
+            <WeatherWidget />
+            
+            <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+              <h3 className="font-heading font-bold text-sm text-hung mb-1">
+                Radio Status
+              </h3>
+              <p className="text-2xl font-bold">🔴 LIVE</p>
+              <p className="text-sm text-gray-400">HOTMESS FM</p>
+            </div>
+
+            <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+              <h3 className="font-heading font-bold text-sm text-hotpink mb-1">
+                Active Scanners
+              </h3>
+              <p className="text-2xl font-bold">247</p>
+              <p className="text-sm text-gray-400">earning now</p>
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* Featured Drops */}
+      <FeaturedDrops />
 
       {/* Features Grid */}
       <section className="py-20 px-4 bg-gray-900">
@@ -87,6 +114,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Community Feed */}
+      <CommunityFeed />
 
       {/* Footer */}
       <footer className="border-t border-gray-800 py-8 px-4">
