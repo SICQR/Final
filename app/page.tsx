@@ -10,10 +10,15 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Skip to main content for accessibility */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+      
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4">
+      <section className="relative py-20 px-4" id="main-content">
         <div className="container mx-auto text-center">
           <div className="mb-8">
             <p className="text-hotpink font-semibold mb-2">Queer engine. Streamed. Scanned. Worn.</p>
@@ -38,6 +43,23 @@ export default function HomePage() {
             <Link href="/affiliate" className="btn-primary">
               Join the Room
             </Link>
+          </div>
+
+          {/* New Features Showcase */}
+          <div className="max-w-2xl mx-auto mb-16 p-6 bg-gray-900 rounded-lg border border-gray-800">
+            <h2 className="text-2xl font-heading font-bold mb-4 text-hung">🎮 Enhanced Navigation</h2>
+            <p className="text-gray-300 mb-4">
+              Experience NES-style tab completion and keyboard shortcuts for lightning-fast navigation.
+            </p>
+            <div className="flex flex-wrap gap-2 justify-center text-sm">
+              <span className="kbd">Tab</span>
+              <span className="text-gray-400">or</span>
+              <span className="kbd">Ctrl + K</span>
+              <span className="text-gray-400">for command palette</span>
+              <span className="text-gray-400">•</span>
+              <span className="kbd">?</span>
+              <span className="text-gray-400">for shortcuts</span>
+            </div>
           </div>
         </div>
       </section>
@@ -78,6 +100,7 @@ export default function HomePage() {
                 Aftercare (HNHMESS)
               </h3>
               <p className="text-gray-300 mb-6">
+                Sunday recovery show. Gentle, real, necessary.
                 HAND &apos;N&apos; HAND IS THE ONLY WAY TO LAND.
               </p>
               <p className="text-sm italic text-hung">

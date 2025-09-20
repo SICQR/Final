@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import React from "react";
 import "./globals.css";
+import CommandPalette from "@/components/CommandPalette";
+import KeyboardShortcuts from "@/components/KeyboardShortcuts";
+import UserPreferences from "@/components/UserPreferences";
 
 export const metadata: Metadata = {
   title: "HOTMESS London — The Filth Frequency",
@@ -31,6 +34,9 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         <main>{children}</main>
+        <CommandPalette />
+        <KeyboardShortcuts />
+        <UserPreferences />
       </body>
     </html>
   );
