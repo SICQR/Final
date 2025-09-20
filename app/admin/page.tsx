@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Button, Card } from "@/components/ui";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Admin — HOTMESS",
@@ -15,7 +17,7 @@ export default function AdminPage() {
           </h1>
           
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
+            <Card variant="dark">
               <h2 className="text-2xl font-heading font-bold mb-4 text-hung">
                 Content Management
               </h2>
@@ -25,37 +27,45 @@ export default function AdminPage() {
                 <li>• Update radio schedule</li>
                 <li>• Configure affiliate settings</li>
               </ul>
-              <button className="btn-primary mt-6 w-full">
-                Open Sanity Studio
-              </button>
-            </div>
+              <Link href="/studio" target="_blank" className="block mt-6">
+                <Button variant="primary" className="w-full">
+                  Open Sanity Studio
+                </Button>
+              </Link>
+            </Card>
 
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
+            <Card variant="dark">
               <h2 className="text-2xl font-heading font-bold mb-4 text-hotpink">
                 Analytics
               </h2>
               <ul className="space-y-3 text-gray-300">
-                <li>• Website traffic</li>
-                <li>• Sales performance</li>
-                <li>• Radio listener stats</li>
-                <li>• Affiliate commissions</li>
+                <li>• Website traffic: Coming soon</li>
+                <li>• Sales performance: Coming soon</li>
+                <li>• Radio listener stats: Coming soon</li>
+                <li>• Affiliate commissions: Coming soon</li>
               </ul>
-              <button className="btn-secondary mt-6 w-full">
-                View Reports
-              </button>
-            </div>
+              <Button variant="secondary" className="w-full mt-6" disabled>
+                View Reports (Coming Soon)
+              </Button>
+            </Card>
           </div>
 
-          <div className="mt-12 p-6 bg-gray-900 rounded-lg border border-gray-800">
+          <Card variant="dark" className="mt-12">
             <h2 className="text-2xl font-heading font-bold mb-4 text-center text-hung">
               Quick Actions
             </h2>
             <div className="grid md:grid-cols-3 gap-4">
-              <button className="btn-primary">Add Product</button>
-              <button className="btn-secondary">Schedule Show</button>
-              <button className="btn-primary">Send Newsletter</button>
+              <Link href="/studio" target="_blank">
+                <Button variant="primary" className="w-full">Add Product</Button>
+              </Link>
+              <Button variant="secondary" className="w-full" disabled>
+                Schedule Show (Coming Soon)
+              </Button>
+              <Button variant="ghost" className="w-full" disabled>
+                Send Newsletter (Coming Soon)
+              </Button>
             </div>
-          </div>
+          </Card>
         </div>
       </div>
     </div>
