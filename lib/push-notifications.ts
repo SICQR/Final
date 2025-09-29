@@ -3,7 +3,7 @@
  * Handles web push notifications, user preferences, and admin management
  */
 
-interface PushSubscription {
+interface CustomPushSubscription {
   endpoint: string;
   keys: {
     p256dh: string;
@@ -76,7 +76,7 @@ export class PushNotificationService {
    */
   async subscribeUser(
     userId: string,
-    subscription: PushSubscription,
+    subscription: CustomPushSubscription,
     preferences?: Partial<UserNotificationPreferences>
   ): Promise<void> {
     try {
@@ -339,7 +339,7 @@ export class PushNotificationService {
   /**
    * Database operations (placeholder implementations)
    */
-  private async storeSubscription(userId: string, subscription: PushSubscription): Promise<void> {
+  private async storeSubscription(userId: string, subscription: CustomPushSubscription): Promise<void> {
     // Implementation would store in database
     console.log('Storing subscription for user:', userId);
   }
@@ -349,7 +349,7 @@ export class PushNotificationService {
     console.log('Removing subscription for user:', userId);
   }
 
-  private async getUserSubscription(userId: string): Promise<PushSubscription | null> {
+  private async getUserSubscription(userId: string): Promise<CustomPushSubscription | null> {
     // Implementation would fetch from database
     return null;
   }

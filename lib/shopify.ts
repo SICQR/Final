@@ -317,7 +317,12 @@ export class ShopifyAutomation {
           ...(bundleData.ageRestricted ? ['age-restricted'] : []),
         ].join(','),
         status: bundleData.isActive ? 'active' : 'draft',
-        variants: [{
+      });
+
+      // Update the default variant with bundle data
+      if (bundleProduct.variants && bundleProduct.variants.length > 0) {
+        const variant = bundleProduct.variants[0];
+        await this.updateVariant(variant.id, {
           title: 'Default Bundle',
           price: bundleData.bundlePrice.toString(),
           sku: this.generateSKU({
@@ -327,8 +332,8 @@ export class ShopifyAutomation {
           inventory_policy: 'deny',
           inventory_management: 'shopify',
           requires_shipping: true,
-        }],
-      });
+        });
+      }
 
       // Store bundle metadata
       await this.createMetafield(bundleProduct.id, 'bundle', 'products', JSON.stringify(bundleData.products));
