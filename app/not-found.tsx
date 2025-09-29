@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center">
@@ -8,12 +11,11 @@ export default function NotFound() {
         <p className="text-2xl text-gray-300 mb-8">
           This page ghosted
         </p>
-        <a 
-          href="/"
-          className="btn-primary"
-        >
-          Take me home
-        </a>
+        <Link href="/">
+          <Button variant="neon" size="lg">
+            Take me home
+          </Button>
+        </Link>
       </div>
     </div>
   );
