@@ -1,0 +1,13 @@
+# NES Tab Completion
+
+This document provides information on the tab completion feature for NES.
+
+## Features
+- Easy-to-use interface
+- Customizable settings
+
+## Usage
+To use tab completion, simply press the Tab key while typing commands.
+
+## Configuration
+You can configure tab completion settings in the preferences menu.
