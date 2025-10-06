@@ -20,6 +20,12 @@ export default function Navigation() {
           <Link href="/affiliate" className="hover:text-hung transition-colors">
             Affiliate
           </Link>
+          <div className="ml-4 text-xs text-gray-500 hidden lg:flex items-center space-x-2">
+            <kbd className="px-1 py-0.5 bg-gray-800 rounded text-hotpink">Ctrl</kbd>
+            <span>+</span>
+            <kbd className="px-1 py-0.5 bg-gray-800 rounded text-hotpink">K</kbd>
+            <span className="ml-1">for commands</span>
+          </div>
         </div>
       </nav>
     </header>

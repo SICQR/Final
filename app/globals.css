@@ -10,6 +10,22 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', system-ui, sans-serif;
   }
+
+  /* Keyboard navigation styles */
+  *:focus-visible {
+    @apply outline-2 outline-hotpink outline-offset-2;
+  }
+
+  /* Light theme support */
+  html.light {
+    --hotpink: #ff1981;
+    --hung: #ffba00;
+    color-scheme: light;
+  }
+
+  html.light body {
+    @apply bg-white text-black;
+  }
 }
 
 @layer components {
@@ -18,16 +34,43 @@
   }
   
   .btn-primary {
-    @apply bg-hotpink hover:bg-hotpink/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors;
+    @apply bg-hotpink hover:bg-hotpink/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-hotpink focus:ring-offset-2 focus:ring-offset-black;
   }
   
   .btn-secondary {
-    @apply bg-hung hover:bg-hung/90 text-black font-semibold py-3 px-6 rounded-lg transition-colors;
+    @apply bg-hung hover:bg-hung/90 text-black font-semibold py-3 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-hung focus:ring-offset-2 focus:ring-offset-black;
+  }
+
+  /* Command palette styles */
+  .command-palette-backdrop {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Keyboard shortcut hints */
+  .kbd {
+    @apply inline-flex items-center px-1.5 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300 border border-gray-600;
+  }
+
+  /* Accessibility improvements */
+  .skip-link {
+    @apply absolute -top-40 left-0 bg-hotpink text-white p-3 z-50 focus:top-0;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Animation preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
