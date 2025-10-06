@@ -24,10 +24,53 @@
   .btn-secondary {
     @apply bg-hung hover:bg-hung/90 text-black font-semibold py-3 px-6 rounded-lg transition-colors;
   }
+
+  .btn-ghost {
+    @apply bg-transparent border border-gray-600 text-white hover:bg-gray-800 font-semibold py-3 px-6 rounded-lg transition-colors;
+  }
+
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-hotpink to-hung bg-clip-text text-transparent;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .transition-all-slow {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
